@@ -17,56 +17,27 @@
       <div class="flex flex-row">
       <div class="w-1/2 mx-auto m-4">
   <pre><code class="language-python max-w-3/4">
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
-import os
-import sys
+from django.contrib import admin
+from django.urls import path, include
 
-
-def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RutineTracker.settings')
-    try:
-        from django.core.management import execute_from_command_line
-    except ImportError as exc:
-        raise ImportError(
-            "Couldn't import Django. Are you sure it's installed and "
-            "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
-        ) from exc
-    execute_from_command_line(sys.argv)
-
-
-if __name__ == '__main__':
-    main()
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('habitTracker/', include('HabitTracker.urls')),
+    path('moodTracker/', include('MoodTracker.urls')),
+]
 
   </code></pre>
     </div>
 
 <div class="w-1/2 mx-auto m-4">
   <pre><code class="language-python max-w-3/4">
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
-import os
-import sys
+from django.urls import path
+from . import views
 
-
-def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RutineTracker.settings')
-    try:
-        from django.core.management import execute_from_command_line
-    except ImportError as exc:
-        raise ImportError(
-            "Couldn't import Django. Are you sure it's installed and "
-            "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
-        ) from exc
-    execute_from_command_line(sys.argv)
-
-
-if __name__ == '__main__':
-    main()
+urlpatterns = [
+    path('', views.lista_nawykow, name='lista-nawykow'),
+    path('edition', views..., name='edycja-nawykow'),
+]
 
   </code></pre>
     </div>
